@@ -1,0 +1,19 @@
+dotnet -h
+
+
+This will show all the project templates
+
+dotnet new -h
+
+To create a solution file 
+
+dotnet new sln
+
+
+Create webapi in the same folder with API name 
+
+dotnet new webapi -o API
+
+API\API.csproj` added to the solution
+
+dotnet sln add API
