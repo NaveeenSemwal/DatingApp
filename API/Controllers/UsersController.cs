@@ -11,9 +11,7 @@ using Microsoft.Extensions.Logging;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : BaseApiController
     {
         private const string Id = "{id}";
         private readonly DataContext _dbContext;
@@ -22,13 +20,13 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AppUser>>> GetAll()
         {
-           return await _dbContext.Users.ToListAsync();
+           return await _dbContext.AppUsers.ToListAsync();
         }
 
         [HttpGet(Id)]
         public async Task<ActionResult<AppUser>> Get(int id) 
         { 
-           return await  _dbContext.Users.FindAsync(id);
+           return await  _dbContext.AppUsers.FindAsync(id);
         }
 
     }

@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
+using API.Entities;
+using Microsoft.AspNetCore.Identity;
 
 namespace API
 {
@@ -34,6 +36,14 @@ namespace API
             {
                 x.UseSqlite(connection);
             });
+
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.User.RequireUniqueEmail = false;
+            })
+             .AddEntityFrameworkStores<DataContext>()
+             .AddDefaultTokenProviders();
+
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
