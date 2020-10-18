@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using API.Data;
 using API.DTOs;
 using API.Entities;
+using API.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,16 +16,18 @@ namespace API.Controllers
         private const string UserLogin = "login";
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(UserManager<AppUser> userManager, 
+        SignInManager<AppUser> signInManager,ITokenService tokenService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _tokenService = tokenService;
         }
 
 
-
-
+        // http://localhost:5000/api/Account/register
         [HttpPost(RegisterUser)]
         public async Task<ActionResult> Register(RegisterDto registerDto)
         {
@@ -39,7 +42,12 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return Ok(user);
+                return Ok(new UserDto {
+
+                UserName= user.UserName,
+                AccessToken= _tokenService.CreateToken(user)
+
+                });
             }
             else
             {
@@ -47,7 +55,7 @@ namespace API.Controllers
             }
         }
 
-
+        
         [HttpPost(UserLogin)]
         public async Task<ActionResult> Login(LoginDto loginDto)
         {
@@ -56,7 +64,19 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return Ok(result.Succeeded);
+               var user= new AppUser 
+               { 
+                   UserName= loginDto.UserName,
+                   Email = loginDto.UserName
+               };
+
+                return Ok(new UserDto 
+                {
+
+                UserName= user.UserName,
+                AccessToken= _tokenService.CreateToken(user)
+
+                });
             }
             else
             {
