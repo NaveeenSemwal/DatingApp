@@ -25,3 +25,9 @@ dotnet build
 Update database migrations command
 
 dotnet ef database update
+
+
+____________________________________________________________________________
+
+Generate a component
+ng g c nav --skip-tests
