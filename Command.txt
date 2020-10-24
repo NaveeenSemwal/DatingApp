@@ -31,3 +31,6 @@ ____________________________________________________________________________
 
 Generate a component
 ng g c nav --skip-tests
+
+Generate Service
+ng g s account --skip-tests
