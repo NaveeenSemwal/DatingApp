@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/User';
 import {  AccountService } from "../services/account.service";
 
 @Component({
@@ -10,20 +11,19 @@ export class NavComponent implements OnInit {
 
   model : any = {};
 
-  isLoggedIn :boolean
-
-  constructor(private accountService: AccountService) { }
+  // If you need to access accountService in Template also, then make it public.
+  constructor(public accountService: AccountService) { }
 
   ngOnInit(): void {
+
   }
 
   login()
   {
    this.accountService.login(this.model).subscribe(response=>{
-     
-    console.log(response);
-    this.isLoggedIn = true;
 
+    console.log(response);
+    
    },error=>{
   
      alert(error);
@@ -32,7 +32,7 @@ export class NavComponent implements OnInit {
 
   logout()
   {
-    this.isLoggedIn = false;
+    this.accountService.logout();
   }
 
 }
