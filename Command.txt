@@ -1,3 +1,8 @@
+Ctrl + Shift + P : Open Terminal 
+
+Ctrl + P  : Open file in solution
+
+
 dotnet -h
 
 
@@ -34,3 +39,15 @@ ng g c nav --skip-tests
 
 Generate Service
 ng g s account --skip-tests
+
+____________________________________________________________________________
+Generate interceptor for Global Error handle
+
+ng g interceptor --skip-tests
+
+
+____________________________________________________________________________
+
+Drop database 
+
+C:\DotnetCore\DatingAPP\API> dotnet ef database drop

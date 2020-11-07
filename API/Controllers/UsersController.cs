@@ -33,7 +33,6 @@ namespace API.Controllers
            return await  _dbContext.AppUsers.FindAsync(id);
         }
 
-        
-
+   
     }
 }

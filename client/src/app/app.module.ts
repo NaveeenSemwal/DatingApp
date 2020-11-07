@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {  HttpClientModule } from "@angular/common/http";
+import {  HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 // Template Form
 import { FormsModule } from "@angular/forms"; 
 
@@ -12,6 +12,8 @@ import { NavComponent } from './nav/nav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { ErrorInterceptor } from "./interceptors/error.interceptor";
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
 
 
 @NgModule({
@@ -19,7 +21,8 @@ import { RegisterComponent } from './register/register.component';
     AppComponent,
     NavComponent,
     HomeComponent,
-    RegisterComponent
+    RegisterComponent,
+    TestErrorsComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +33,10 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule
     
   ],
-  providers: [],
+  providers: [
+{ provide : HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi:true }
+
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

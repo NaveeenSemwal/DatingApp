@@ -10,6 +10,7 @@ namespace API.Data
         {
         }
 
+        
         public DbSet<AppUser> AppUsers { get; set; }
     }
 }

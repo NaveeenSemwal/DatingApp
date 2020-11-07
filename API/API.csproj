@@ -5,6 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\Migrations\20201107093024_UpdateAppUser.cs" />
+    <Compile Remove="Data\Migrations\20201107093024_UpdateAppUser.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201107100707_UserPhotoTest.cs" />
+    <Compile Remove="Data\Migrations\20201107100707_UserPhotoTest.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201107100955_UserPhotoMapping.cs" />
+    <Compile Remove="Data\Migrations\20201107100955_UserPhotoMapping.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201107101433_UserPhotoMapping.cs" />
+    <Compile Remove="Data\Migrations\20201107101433_UserPhotoMapping.Designer.cs" />
+    <Compile Remove="Data\Migrations\20201107101732_UserPhotoMapping.cs" />
+    <Compile Remove="Data\Migrations\20201107101732_UserPhotoMapping.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0-rc.2.20475.17" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0-rc.1.20451.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.0-rc.1.20451.13">
@@ -12,6 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.0-rc.1.20451.13" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
